@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 09</h1>
+    <script>
+        /*Escribir el algoritmo que lea una hora y que muestre la programación de
+        acuerdo al horario en que se transmite “dibujos animados ” : Si es de 10 a
+        12 horas, “ tele serie ” : si es de 13 a 16 horas, “ novelas repetidas ” :
+        si es de 16 a 18 horas, “dibujos animados ” : si es de 18 a 22 horas,
+        “noticiero” : si es de 22 a 23 horas.*/
+        const mensajeProgramacionTV = (hora = undefined) => {
+            if(hora === undefined) return console.warn('Debes ingresar la hora a evaluar');
+            if(typeof hora !== "number") return console.error(`El valor "${hora}" debe ser un numero`);
+            if(Math.sign(hora) === -1) return console.error('La hora no puede ser un numero negativo');
+            if(hora < 10 || hora >= 24) return console.info('Programacion desconocida');
+
+            return(hora >= 10 && hora <= 12 )
+                ? console.info('Dibujos animados')
+                : (hora > 12 && hora <= 16)
+                    ? console.info('Tele serie')
+                    : (hora > 16 && hora <= 18)
+                        ? console.info('Novelas repetidas')
+                        : (hora > 18 && hora <= 22)
+                            ? console.info('Dibujos animados')
+                            : console.info('Noticiero');
+        }
+
+        mensajeProgramacionTV();
+        mensajeProgramacionTV('0');
+        mensajeProgramacionTV(-10);
+        mensajeProgramacionTV(9);
+        mensajeProgramacionTV(11);
+        mensajeProgramacionTV(23);
+        mensajeProgramacionTV(24);
+    </script>
+</body>
+</html>

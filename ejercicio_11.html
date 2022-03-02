@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 11</h1>
+    <script>
+        /*Una tienda se dedica a la venta de computadoras, cada vendedor
+        tiene un sueldo mensual pero además de su sueldo gana una comisión por
+        venta: Si el monto de venta es mayor de 10,000 la comisión será del 15%.
+        Si el monto de venta es mayor o igual a 5,000 y menor de 10,000 la
+        comisión es del 5%. Si el monto de la venta es menor que 5,000 no tiene
+        comisión. Escribir un algoritmo que calcule el sueldo total de cada
+        vendedor.*/
+        const calcularSueldoMensual = (sueldoMensual = undefined, montoVenta = undefined) => {
+            if(sueldoMensual === undefined) return console.warn('NO ingresó el sueldo del empleado');
+            if(montoVenta === undefined) return console.warn('NO ingresó el monto de la venta');
+            if(typeof sueldoMensual !== "number") return console.error(`El valor "${sueldoMensual}" debe ser un numero`);
+            if(typeof montoVenta !== "number") return console.error(`El valor "${montoVenta}" debe ser un numero`);
+            if(sueldoMensual <= 0) return console.error('El sueldo mensual debe ser mayor a 0');
+            if(montoVenta < 0) return console.error('El monto de la venta NO puede ser negativo');
+
+            let total = `Sueldo Mensual: $${sueldoMensual} \nTotal de ventas realizadas: $${montoVenta}`;
+            return (montoVenta < 5000)
+                ? console.info(total + `\nSueldo Final: $${sueldoMensual} `)
+                : (montoVenta >= 5000 && montoVenta < 10000)
+                    ? console.info(total + `\nComision (5%): $${montoVenta * 0.05} \nSueldo Final: $${sueldoMensual + (montoVenta * 0.05)} `)
+                    : console.info(total + `\nComision (15%): $${montoVenta * 0.15} \nSueldo Final: $${sueldoMensual + (montoVenta * 0.15)} `);
+            
+        }
+
+        calcularSueldoMensual();
+        calcularSueldoMensual(12)
+        calcularSueldoMensual('6000',5000);
+        calcularSueldoMensual(6000,'5000');
+        calcularSueldoMensual(0,500);
+        calcularSueldoMensual(6000,-200);
+        calcularSueldoMensual(6000,4999);
+        calcularSueldoMensual(6000,5000);
+        calcularSueldoMensual(6000,10001);
+    </script>
+</body>
+</html>

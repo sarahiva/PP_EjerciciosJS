@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 10</h1>
+    <script>
+        /*Dadas 3 longitudes, escribir un algoritmo que determine mediante un
+        mensaje si tales longitudes forman un triangulo: equilátero (cuando sus
+        tres lados son iguales), isósceles (cuando dos de sus lados son iguales) o
+        escaleno (cuando sus tres lados son diferentes), o no forman triangulo
+        (cada lado tiene que ser menor que la suma de los otros dos).*/
+        const esTriangulo = (l1 = undefined, l2 = undefined, l3 = undefined) => {
+            if(l1 === undefined || l2 === undefined || l3 === undefined) return console.warn('Debe ingresar la longitud de los 3 lados del triangulo');
+            if(typeof l1 !== "number") return console.error(`El valor "${l1}" del lado 1 debe ser un numero`);
+            if(typeof l2 !== "number") return console.error(`El valor "${l2}" del lado 2 debe ser un numero`);
+            if(typeof l3 !== "number") return console.error(`El valor "${l3}" del lado 3 debe ser un numero`);
+            if(Math.sign(l1) !== 1) return console.error(`El valor "${l1}" del lado 1 debe ser mayor a 0`);
+            if(Math.sign(l2) !== 1) return console.error(`El valor "${l2}" del lado 2 debe ser mayor a 0`);
+            if(Math.sign(l3) !== 1) return console.error(`El valor "${l3}" del lado 3 debe ser mayor a 0`);
+
+            return((l1 > l3 + l2) || (l2 > l3 + l1) || (l3 > l1 + l2))
+                ? console.info('Las longitudes dadas no forman un triagulo')
+                : (l1 === l2 && l2 === l3)
+                    ? console.info('Es un triangulo equilatero')
+                    : (l1 === l2 || l1 === l3 || l2 === l3)
+                        ? console.info('Es un triangulo isosceles')
+                        : console.info('Es un triangulo escaleno');
+        }
+
+        esTriangulo();
+        esTriangulo('1',1,1);
+        esTriangulo(1,1,'1');
+        esTriangulo(0,1,1);
+        esTriangulo(2,2,5);
+        esTriangulo(1,1,1);
+        esTriangulo(2,2,3);
+        esTriangulo(2,3,4);
+        esTriangulo(2,1,5);
+        
+    </script>
+</body>
+</html>

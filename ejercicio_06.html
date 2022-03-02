@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 06</h1>
+    <script>
+        /*Escribir un algoritmo que lea las horas trabajadas de una persona y la
+        tarifa de pago para calcular su salario e imprimirlo.*/
+        const calcularSalario = (horas = undefined,tarifa = undefined) => {
+            if(horas === undefined  || tarifa === undefined) return console.warn('Debe ingresar ambos campos (horas, tarifa)');
+            if(typeof horas !== "number") return console.error(`El valor "${horas}" debe ser un numero`);
+            if(typeof tarifa !== "number") return console.error(`El valor "${tarifa}" debe ser un numero`);
+            if(horas <= 0 || tarifa <= 0) return console.error('Los campos <horas> <tarifa> deben ser mayores a 0');
+
+            return console.info(`Horas trabajadas: ${horas} \nTarifa por hora: $${tarifa} \nSalario: $${tarifa*horas}`);
+        }
+
+        calcularSalario();
+        calcularSalario('8',120);
+        calcularSalario(8,'120');
+        calcularSalario(8,-12);
+        calcularSalario(35,90);    
+    </script>
+</body>
+</html>

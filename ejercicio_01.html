@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 01</h1>
+    <script>
+        /*A un trabajador le pagan según sus horas trabajadas y una tarifa de pago
+        por hora. Si la cantidad de horas trabajadas es mayor a 40 horas, la
+        tarifa se incrementa en un 50% para las horas extras. Escribir un
+        algoritmo que calcule el salario del trabajador dadas las horas trabajadas
+        y la tarifa.*/
+
+        const calcularSalario = (horas = undefined, tarifa = undefined) => {
+            if(horas === undefined  || tarifa === undefined) return console.warn('Debe ingresar ambos campos (horas, tarifa)');
+            if(typeof horas !== "number") return console.error(`El valor "${horas}" debe ser un numero`);
+            if(typeof tarifa !== "number") return console.error(`El valor "${tarifa}" debe ser un numero`);
+            if(horas <= 0 || tarifa <= 0) return console.error('Los campos <horas> <tarifa> deben ser numeros mayores a 0');
+
+            return (horas <= 40) 
+                    ? console.info(`Tu salario es: $${horas * tarifa}`) 
+                    : console.info(`Tu salario es: $${(40 * tarifa)+((horas-40) * (tarifa + (tarifa/2)))}`);
+        }
+
+        calcularSalario();
+        calcularSalario(42);
+        calcularSalario(42,'8');
+        calcularSalario(-42,8);
+        calcularSalario(56,12);
+    </script>
+</body>
+</html>

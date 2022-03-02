@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 04</h1>
+    <script>
+        /*Escribir un algoritmo que lea un tiempo en segundos y que calcule los
+        segundos restantes que le correspondan para convertirse exactamente en
+        minutos.*/
+
+        const calcularSegundos = (segundos = undefined) => {
+            if(segundos === undefined) return console.warn('NO ingresaste el tiempo en segundos a evaluar');
+            if(typeof segundos !== "number") return console.error(`El valor "${segundos}" debe ser un numero`);
+            if(segundos <= 0) return console.error('El tiempo en segundos debe ser mayor a 0');
+            if(!(/^[0-9]*$/.test(segundos))) return console.warn('Por favor, intrudzuca solo numeros enteros positivos');
+
+            return (segundos < 60)
+                ? console.info(`Segundos dados: ${segundos} \nSegundos faltantes para tener 1 min: ${60 - segundos} seg`)
+                : ((segundos % 60) === 0)
+                    ? console.info(`Segundos dados: ${segundos} seg = Tiempo en minutos: ${segundos/60} min`)
+                    : console.info(`Segundos dados: ${segundos} seg = Tiempo en minutos: ${Math.floor(segundos/60)} min ${segundos % 60} seg \nSegundos faltantes para tener ${Math.ceil(segundos/60)} minutos: ${60 - (segundos % 60)} seg`);
+        }
+
+        calcularSegundos();
+        calcularSegundos('50');
+        calcularSegundos(0);
+        calcularSegundos(60.4);
+        calcularSegundos(40);
+        calcularSegundos(120);
+        calcularSegundos(156);
+        calcularSegundos(234);
+    </script>
+</body>
+</html>

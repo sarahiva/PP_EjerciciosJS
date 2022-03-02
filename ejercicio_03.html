@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 03</h1>
+    <script>
+        /*Escribir un algoritmo que lea una cantidad y calcule el descuento
+        considerando que si la cantidad dada está por encima de 100 el descuento
+        es el 10% y si está por debajo de 100 el descuento es el 2%.*/
+
+        const calcularDescuento = (cantidad = undefined) => {
+            if(cantidad === undefined) return console.warn('NO ingresaste la cantidad a evaluar');
+            if(typeof cantidad !== "number") return console.error(`El valor "${cantidad}" debe ser un numero`);
+            if(cantidad <= 0) return console.error('La cantidad debe ser mayor a 0');
+
+            return (cantidad > 100)
+                ? console.info(`Cantidad: $${cantidad} \nDescuento del 10%: $${0.1 * cantidad} \nTotal: $${(cantidad - (0.1 * cantidad))}`)
+                : (cantidad < 100) 
+                    ? console.info(`Cantidad: $${cantidad} \nDescuento del 2%: $${0.02 * cantidad} \nTotal: $${(cantidad - (0.02 * cantidad))}`)
+                    : console.info(`Total: $${cantidad}, (el descuento NO es aplicado si la cantidad en igual a 100)`);
+        }
+
+        calcularDescuento();
+        calcularDescuento('100');
+        calcularDescuento(0);
+        calcularDescuento(110);
+        calcularDescuento(95);
+        calcularDescuento(100);
+    </script>
+</body>
+</html>

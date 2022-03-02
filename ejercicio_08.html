@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 08</h1>
+    <script>
+        /*Escribir el algoritmo que muestre el mensaje de acuerdo a la edad
+        ingresada: Si la edad es de 0 a 10 años “niño”, si la edad es de 11 a 14
+        años “púber” , si la edad es de 15 a 18 años “ adolescente” , si la edad
+        es de 19 a 25 años “joven” , si la edad es de 26 a 65 años “ adulto” , si
+        la edad es mayor de 65 “anciano”.*/
+
+        const mensajeEdad = (edad = undefined) => {
+            if(edad === undefined) return console.warn('Debes ingresar la edad a evaluar');
+            if(typeof edad !== "number") return console.error(`El valor "${edad}" debe ser un numero`);
+            if(Math.sign(edad) === -1) return console.error('La edad no puede ser un numero negativo');
+
+            return(edad <= 10 )
+                ? console.info('Eres un niño!')
+                : (edad > 10 && edad <= 14)
+                    ? console.info('Eres un puberto!')
+                    : (edad > 14 && edad <= 18)
+                        ? console.info('Eres un adolescente!')
+                        : (edad > 18 && edad <= 25)
+                            ? console.info('Eres un joven!')
+                            : (edad > 25 && edad <= 65)
+                                ? console.info('Eres un adulto!')
+                                : console.info('Ya eres anciano...');
+        }
+
+        mensajeEdad();
+        mensajeEdad('3');
+        mensajeEdad(-3);
+        mensajeEdad(0);
+        mensajeEdad(22);
+        mensajeEdad(66);
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 13</h1>
+    <script>
+        /*Escribir un algoritmo que calcule las raíces de una ecuación
+        cuadrática cuya forma canónica es:
+                    Ax**2 + By + C = 0
+        Solo se calcularán raíces reales. si el discriminante en menor de 0,
+        imprimir un mensaje que indique que existen dos raíces imaginarias. Los
+        coeficientes A,B,C serán ingresados.*/
+
+        const ecuacionCuadratica = (a = undefined, b = undefined, c = undefined) => {
+            if(a === undefined || b === undefined || c === undefined) return console.warn('Asegúrate de haber ingresado los valores de A, B y C');
+            if(typeof a !== "number" || typeof b !== "number" || typeof c !== "number") return console.warn('Asegúrate de que los valores ingresados sean numeros');
+
+            let discriminante = 0;
+            (Math.sign(b) === -1) ? discriminante = (-1 * Math.pow(b,2)) - (4*a*c) : discriminante = Math.pow(b,2) - (4*a*c);
+            return (discriminante < 0)
+                ? console.info('Existen dos raíces imaginarias')
+                : (discriminante === 0)
+                    ? console.info(`Es una solución doble: \nx1 = ${((-1*b) + Math.sqrt(discriminante))/2*a}, x2 = ${((-1*b) - Math.sqrt(discriminante))/2*a}`)
+                    : console.info(`Resultado: \nx1 = ${((-1*b) + Math.sqrt(discriminante))/2*a}, x2 = ${((-1*b) - Math.sqrt(discriminante))/2*a}`);
+        }
+
+        ecuacionCuadratica();
+        ecuacionCuadratica(1,2,'0');
+        ecuacionCuadratica(1,2,-8); //x1= 2, x2 = -4
+        ecuacionCuadratica(3,2,7); // sin solucion
+        ecuacionCuadratica(1,6,8); // x1 = -2, x2 = -4
+        ecuacionCuadratica(4,4,1); //solucion doble
+        ecuacionCuadratica(2,1,2); //sin solicion
+
+    </script>
+</body>
+</html>

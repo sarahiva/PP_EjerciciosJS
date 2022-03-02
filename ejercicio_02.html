@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 02</h1>
+    <script>
+        /* A un trabajador le descuentan de su sueldo el 10% si su sueldo es menor o
+        igual a 1000, por encima de 1000 y hasta 2000 el 5% del adicional, y por
+        encima de 2000 el 3% del adicional. Escribir un algoritmo que calcule el
+        descuento y sueldo neto que recibe el trabajador dado su sueldo.*/
+
+        const calcularSueldoNeto = (sueldo = undefined) => {
+            if(sueldo === undefined) return console.warn('NO ingresaste el sueldo del empleado');
+            if(typeof sueldo !== "number") return console.error(`El valor "${sueldo}" debe ser un numero`);
+            if(sueldo <= 0) return console.error('El sueldo debe ser mayor a 0');
+
+            return (sueldo <= 1000)
+                ? console.info(`Sueldo: $${sueldo} \nDescuento del 10%: $${0.1 * sueldo} \nSueldo Neto: $${(sueldo - (0.1 * sueldo))}`)
+                : (sueldo > 1000 && sueldo <= 2000)
+                    ? console.info(`Sueldo: $${sueldo} \nDescuento del 5%: $${0.05 * sueldo} \nSueldo Neto: $${(sueldo - (0.05 * sueldo))}`)
+                    : console.info(`Sueldo: $${sueldo} \nDescuento del 3%: $${0.03 * sueldo} \nSueldo Neto: $${(sueldo - (0.03 * sueldo))}`);
+        }
+
+        calcularSueldoNeto();
+        calcularSueldoNeto('1000');
+        calcularSueldoNeto(-200);
+        calcularSueldoNeto(900);
+        calcularSueldoNeto(1400);
+        calcularSueldoNeto(2300);
+    </script>
+</body>
+</html>

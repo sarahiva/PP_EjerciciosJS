@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 12</h1>
+    <script>
+        /*Katthy organiza una fiesta en la cual una computadora controla el
+        ingreso mediante 5 claves. Si se ingresa al menos una clave incorrecta la
+        computadora imprimirá "TE EQUIVOCASTE DE FIESTA" y no permitirá el
+        ingreso. Si las 5 claves son correctas imprimirá "BIENVENIDO A LA FIESTA".
+        Escribir un algoritmo que realice lo anterior.
+        Las Claves son: 
+        1: "TIENES"
+        2: "QUE SER"
+        3: "INVITADO"
+        4: "PARA"
+        5: "INGRESAR"*/
+
+        const evaluarClaves = (c1 = undefined, c2 = undefined, c3 = undefined, c4 = undefined, c5 = undefined) => {
+            if(c1 === undefined || c2 === undefined || c3 === undefined || c4 === undefined || c5 === undefined) return console.warn('Asegúrate de haber ingresado las claves requeridas');
+            if(typeof c1 !== "string" || typeof c2 !=="string" || typeof c3 !=="string" || typeof c4 !=="string" || typeof c5 !=="string") return console.warn('Asegúrate de que las claves ingresadas sean cadenas de texto');
+
+            return (c1 === 'TIENES' && c2 === 'QUE SER' && c3 === 'INVITADO' && c4 === 'PARA' && c5 === 'INGRESAR')
+                ? console.info('BIENVENIDO A LA FIESTA!!!') : console.info('TE EQUIVOCASTE DE FIESTA...');
+        }
+
+        evaluarClaves('1','2','3','4');
+        evaluarClaves('1','2','3','4',5);
+        evaluarClaves('TIENES','que ser','INVITADO','PARA','INGRESAR');
+        evaluarClaves('TIENES','QUE SER','INVITADO','PARA','INGRESAR');
+        evaluarClaves('TIENEs','QUE SER','INVITADO','PARA','INGRESAR');
+        evaluarClaves('tienes','que ser','invitado','para','ingresar');
+
+    </script>
+</body>
+</html>

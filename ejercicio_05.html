@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 05</h1>
+    <script>
+        /*Escribir un algoritmo que lea un tiempo en minutos y que calcule los días,
+        horas y minutos que le corresponden.*/
+        const calcularTiempo = (minutos = undefined) => {
+            if(minutos === undefined) return console.warn('NO ingresaste el tiempo en minutos a evaluar');
+            if(typeof minutos !== "number") return console.error(`El valor "${minutos}" debe ser un numero`);
+            if(minutos <= 0) return console.error('El tiempo en minutos debe ser mayor a 0');
+            if(!(/^[0-9]*$/.test(minutos))) return console.warn('Por favor, intrudzuca solo numeros enteros positivos');
+
+            return (minutos < 60)
+                ? console.info(`Minutos dados: ${minutos} \nMinutos faltantes para tener 1 hora: ${60 - minutos} minutos`)
+                : (((minutos % 60) === 0) && ((minutos/60) < 24))
+                    ? console.info(`Minutos dados: ${minutos} min =  ${minutos/60} hora(s)`)
+                    : ((minutos/60) < 24)
+                        ? console.info(`Minutos dados: ${minutos} min = ${Math.floor(minutos/60)} hora(s) con ${minutos % 60} minuto(s)`)
+                        : (((minutos/60) >= 24) && (((minutos/60) % 24) === 0))
+                            ? console.info(`Minutos dados: ${minutos} min = ${(minutos/60) / 24} dia(s)`)
+                            : ((minutos % 1440) > 59)
+                                ? console.info(`Minutos dados: ${minutos} min = ${Math.floor(minutos/1440)} dia(s) con ${Math.floor((minutos % 1440)/60)} hora(s) y ${Math.round((minutos % 1440)%60)} minuto(s)`)
+                                : console.info(`Minutos dados: ${minutos} min = ${Math.floor(minutos/1440)} dia(s) con 0 hora(s) y ${Math.round(minutos % 1440)} minuto(s)`)
+        }
+
+        calcularTiempo();
+        calcularTiempo('1');
+        calcularTiempo(-2);
+        calcularTiempo(0);
+        calcularTiempo(13.5);
+        calcularTiempo(23);
+        calcularTiempo(1380);
+        calcularTiempo(513);
+        calcularTiempo(1470);
+        calcularTiempo(1500);
+        calcularTiempo(3700);
+        calcularTiempo(4319);
+        calcularTiempo(4320);
+
+    </script>
+</body>
+</html>

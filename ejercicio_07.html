@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 07</h1>
+    <script>
+        /*Escribir el algoritmo que permita emitir la factura correspondiente a una
+        compra de un articulo determinado, del que se adquieren una o varias
+        unidades. El IVA es del 15% y si el precio neto ( precio venta mas IVA) es
+        mayor de 50.00 pesos se debe realizar un descuento del 5%.*/
+        const emitirFactura = (costoArticulo = undefined, unidades = undefined) => {
+            if(costoArticulo === undefined) return console.warn('Debe ingresar el costo del articulo');
+            if(unidades === undefined) return console.warn('Debe ingresar las unidades del articulo');
+            if(typeof costoArticulo !== "number") return console.error(`El valor "${costoArticulo}" debe ser un numero`);
+            if(typeof unidades !== "number") return console.error(`El valor "${unidades}" debe ser un numero`);
+            if(costoArticulo <= 0) return console.error('El costo del articulo debe ser mayor a 0');
+            if(unidades <= 0) return console.error('La cantidad de unidades debe ser mayor a 0');
+
+            let importeBruto = costoArticulo * unidades;
+            let iva = importeBruto * 0.15;
+            let precioNeto = importeBruto + iva; 
+            let factura = `\t\t****FACTURA**** \nARTICULO\tCANTIDAD\tPRECIO\tTOTAL \n\tN\t\t\t${unidades}\t\t$${costoArticulo}\t\t$${importeBruto}\n\nIVA (15%): $${iva}`;
+            return(precioNeto <= 50)
+                ? console.info(factura + `\nTOTAL FACTURA: $${precioNeto}`)
+                : console.info(factura + `\nTOTAL: $${precioNeto}\nDESCUENTO 5%: $${precioNeto * 0.05}\nTOTAL FACTURA: $${precioNeto - (precioNeto * 0.05)}`);
+        }
+
+        emitirFactura();
+        emitirFactura(12)
+        emitirFactura('12',2);
+        emitirFactura(12,'4');
+        emitirFactura(-3,4);
+        emitirFactura(12,-3);
+        emitirFactura(12,3);
+        emitirFactura(24,2);
+    </script>
+</body>
+</html>
