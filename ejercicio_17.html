@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 17</h1>
+    <script>
+        /*Modificar el ejercicio 1 para obtener la suma de los salarios de 200 trabajadores.*/
+        const calcularSumaSalario = (maxHoras = undefined, tarifa = undefined) => {
+            if(maxHoras === undefined  || tarifa === undefined) return console.warn('Debe ingresar ambos campos (horas, tarifa)');
+            if(typeof maxHoras !== "number") return console.error(`El valor "${maxHoras}" debe ser un numero`);
+            if(typeof tarifa !== "number") return console.error(`El valor "${tarifa}" debe ser un numero`);
+            if(maxHoras <= 0 || tarifa <= 0) return console.error('Los campos <horas> <tarifa> deben ser numeros mayores a 0');
+
+            let arregloHoras = new Array(), arregloSalarios = new Array(), total = 0;
+            for(let i = 0; i < 200; i++) arregloHoras.push(Math.round(Math.random() * (maxHoras - 1) + 1));
+
+            for(let i = 0; i < 200; i++){
+                if(arregloHoras[i] <= 40){
+                    arregloSalarios.push({'Empleado: ': i+1, 'Horas trabajadas: ':arregloHoras[i], 'Salario: $': arregloHoras[i] * tarifa});
+                    total += arregloHoras[i] * tarifa;
+                }else{
+                    arregloSalarios.push({'Empleado: ': i+1, 'Horas trabajadas: ':arregloHoras[i], 'Salario: $': (40 * tarifa)+((arregloHoras[i] - 40) * (tarifa + (tarifa/2)))});
+                    total += (40 * tarifa)+((arregloHoras[i] - 40) * (tarifa + (tarifa/2)));
+                }
+            }
+
+            let cadena = `Tarifa pagada por hora: $${tarifa} \nSuma TOTAL de los 200 salarios: $${total} \nInformación por empleado: \n`;
+            return console.info(cadena,arregloSalarios );
+        }
+
+        calcularSumaSalario();
+        calcularSumaSalario(45,'200');
+        calcularSumaSalario('45',200);
+        calcularSumaSalario(0,0);
+        calcularSumaSalario(45,120);
+    </script>
+</body>
+</html>

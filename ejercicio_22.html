@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 22</h1>
+    <script>
+        /*Escribir un algoritmo que calcule la media de 100 números dados e
+        imprima su resultado.*/
+        const calcularMedia = (arrNumeros = undefined) => {
+            if(arrNumeros === undefined) return console.warn('NO ingresó el conjunto de números a evaluar');
+            if(!(arrNumeros instanceof Array)) return console.error(`El valor ingresado debe ser un arreglo`);
+            if(arrNumeros.length === 0) return console.error('El arreglo NO puede estar vacío');
+            if(arrNumeros.length !== 100) return console.error('El arreglo debe tener 100 valores');
+            for (const element of arrNumeros) {
+                if(typeof element !== 'number') return console.error(`El valor "${element}" debe ser un número`);
+            }
+
+            return console.info(`La media de ${arrNumeros.join(',')} es igual a: ${arrNumeros.reduce((a,b) => a+b)/arrNumeros.length}`);
+        }
+
+        let aux1 = new Array(), aux2 = new Array();
+        for(let i = 0; i < 100; i++) aux1[i] = (Math.round(Math.random() * (100 + 100) - 100));
+        for(let i = 0; i < 100; i++) aux2[i] = (Math.round(Math.random() * 100));
+
+        calcularMedia();
+        calcularMedia(2);
+        calcularMedia([]);
+        calcularMedia(aux1);
+        calcularMedia(aux2);
+    </script>
+</body>
+</html>

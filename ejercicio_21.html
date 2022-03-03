@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 21</h1>
+    <script>
+        /*Desarrollar un algoritmo para calcular e imprimir el factorial de un número dado.*/
+
+        const factorialDeN = (numero = undefined) => {
+            if(numero === undefined) return console.warn('NO ingresó el número a evaluar');
+            if(typeof numero !== "number") return console.error(`El valor ingresado debe ser un número`);
+            if(Math.sign(numero) !== 1) return console.error('El valor ingresado debe ser mayor a 0');
+
+            let factorial = 1;
+            for(let i = numero; i > 0; i--) factorial *= i;
+
+            return console.info(`El factorial de ${numero} es ${factorial}`);
+        }
+
+        factorialDeN();
+        factorialDeN('5');
+        factorialDeN(0);
+        factorialDeN(5);
+        factorialDeN(12);
+    </script>
+</body>
+</html>

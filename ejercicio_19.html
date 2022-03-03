@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 19</h1>
+    <script>
+        /*Dado un número n, escribir un algoritmo que determine la suma de sus dígitos.*/
+        const sumaDigitos = (numero = undefined) => {
+            if(numero === undefined) return console.warn('NO ingresaste el número a evaluar');
+            if(typeof numero !== "number") return console.error(`El valor ingresado debe ser un número`);
+            if(Math.sign(numero) !== 1) return console.error('El valor ingresado debe ser mayor a 0');
+            if(!(/^[0-9]*$/.test(numero))) return console.warn('Por favor, intrudzuca solo números enteros');
+
+            numero = numero.toString().split('');
+            let aux = numero.map(el => parseInt(el));
+            return console.info(`La suma de los dígitos de ${numero.join('')} (${numero.join('+')}) es ${aux.reduce((a,b) => a+b)}`);
+        }
+
+        sumaDigitos();
+        sumaDigitos('2');
+        sumaDigitos(0);
+        sumaDigitos(1.2);
+        sumaDigitos(12);
+        sumaDigitos(1);
+        sumaDigitos(9);
+        sumaDigitos(35712);
+    </script>
+</body>
+</html>

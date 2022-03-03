@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 15</h1>
+    <script>
+        /* Escribir un algoritmo que permita escoger en un conjunto de números 
+        naturales: 
+        Cuáles son menores que 15.
+        Cuáles son mayores de 50.
+        Cuáles están comprendidos entre 25 y 50.
+        El algoritmo termina con el ingreso de un número negativo.*/
+
+        const evaluarConjunto = (arreglo = undefined) => {
+            if(arreglo === undefined) return console.warn('NO ingresó el conjunto de números a evaluar');
+            if(!(arreglo instanceof Array)) return console.error(`El valor ingresado debe ser un arreglo`);
+            if(arreglo.length === 0) return console.error('El arreglo NO puede estar vacío');
+            for (const element of arreglo) {
+                if(typeof element !== 'number') return console.error(`El valor "${element}" debe ser un numero`);
+            }
+
+            let menoresQue15 = new Array(), mayoresQue50 = new Array(), rango = new Array(), stop = undefined;
+            for (const element of arreglo) {
+                if(Math.sign(element) === -1){
+                    stop = element;
+                    break;
+                }
+                if(element < 15) menoresQue15.push(element);
+                if(element > 50) mayoresQue50.push(element);
+                if(element > 25 && element < 50) rango.push(element);
+            }
+
+            return console.info(`Conjunto a evaluar: ${arreglo} \nEl recorrido se detuvo en el valor "${stop}" del arreglo \nElementos menores que 15: ${menoresQue15} \nElementos mayores a 50: ${mayoresQue50} \nElementos entre 25 y 50: ${rango}`);
+        }
+
+        evaluarConjunto();
+        evaluarConjunto(2);
+        evaluarConjunto([]);
+        evaluarConjunto([1,2,'3',4,5]);
+        evaluarConjunto([1,2,23,50,55,30,-3,45,5]);
+    </script>
+</body>
+</html>

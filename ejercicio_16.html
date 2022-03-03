@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 16</h1>
+    <script>
+        /*Calcular mediante un algoritmo repetitivo la suma de los N primeros
+        números naturales.*/
+        const sumaN = (N = undefined) => {
+            if(N === undefined) return console.warn('NO ingresó el número a evaluar');
+            if(typeof N !== "number") return console.error(`El valor ingresado debe ser un número`);
+            if(Math.sign(N) !== 1) return console.error('El valor ingresado debe ser mayor a 0');
+
+            let suma = 0;
+            for(let i = N; i > 0; i--) suma += i;
+
+            return console.info(`La suma de 1 a ${N} es ${suma}`);
+        }
+
+        sumaN();
+        sumaN('5');
+        sumaN(0);
+        sumaN(5);
+        sumaN(15);
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 18</h1>
+    <script>
+        /*Dadas N notas de un estudiante, escribir un algoritmo que calcule:
+        a) Cuántas notas tiene desaprobadas.
+        b) Cuántas aprobadas.
+        c) El promedio de notas.
+        d) El promedio de notas aprobadas y el de desaprobadas.*/
+        const calcularPromedio = (arrCalif = undefined) => {
+            if(arrCalif === undefined) return console.warn('NO ingresó el conjunto de notas a evaluar');
+            if(!(arrCalif instanceof Array)) return console.error(`El valor ingresado debe ser un arreglo`);
+            if(arrCalif.length === 0) return console.error('El arreglo NO puede estar vacío');
+            for (const element of arrCalif) {
+                if(typeof element !== 'number') return console.error(`El valor "${element}" debe ser un número`);
+            }
+
+            let desaprobadas = arrCalif.filter(el => el < 6);
+            let aprobadas = arrCalif.filter(el => el > 5);
+
+            return console.info(`Notas desaprobadas: ${desaprobadas.length} (${(desaprobadas)}) \nNotas aprobadas: ${aprobadas.length} (${(aprobadas)}) \nPromedio aprobadas: ${(aprobadas.reduce((a,b) => a + b)) / aprobadas.length} \nPromedio desaprobadas: ${(desaprobadas.reduce((a,b) => a + b)) / desaprobadas.length} \nPromedio TOTAL: ${(arrCalif.reduce((a,b) => a+b))/arrCalif.length}`);
+        }
+
+        calcularPromedio();
+        calcularPromedio(3);
+        calcularPromedio([]);
+        calcularPromedio([5,7,4,'6']);
+        calcularPromedio([5,7,4,6]);
+        calcularPromedio([8,9,10,4,3,6,8]);
+        
+    </script>
+
+</body>
+</html>

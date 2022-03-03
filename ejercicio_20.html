@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 20</h1>
+    <script>
+        /*Realizar un algoritmo que permita pedir 50 números naturales y
+        determine e imprima cuántos son pares, impares, positivos y negativos.*/
+        /*NOTA: Los numeros naturales son los numeros enteros positivos*/
+        const evaluarNumeros = (arrNumeros = undefined) => {
+            if(arrNumeros === undefined) return console.warn('NO ingresó el conjunto de números a evaluar');
+            if(!(arrNumeros instanceof Array)) return console.error(`El valor ingresado debe ser un arreglo`);
+            if(arrNumeros.length === 0) return console.error('El arreglo NO puede estar vacío');
+            if(arrNumeros.length !== 50) return console.error('El arreglo debe tener 50 valores');
+            for (const element of arrNumeros) {
+                if(typeof element !== 'number') return console.error(`El valor "${element}" debe ser un número`);
+                if(!(/./.test(element))) return console.warn('Por favor, intrudzuca solo números enteros');
+            }
+
+            let pares = arrNumeros.filter(el => el % 2 === 0);
+            let impares = arrNumeros.filter(el => el % 2 !== 0);
+            let positivos = arrNumeros.filter(el => Math.sign(el) === 1);
+            let negativos = arrNumeros.filter(el => Math.sign(el) === -1);
+
+            return console.info(`Arreglo ingresado: ${arrNumeros} \nNúmeros pares: ${pares.length} (${pares}) \nNúmeros impares: ${impares.length} (${impares}) \nNúmeros positivos: ${positivos.length} (${positivos}) \nNúmeros negativos: ${negativos.length} (${negativos})`);
+        }
+
+        let aux1 = new Array(), aux2 = new Array();
+        for(let i = 0; i < 50; i++) aux1[i] = (Math.round(Math.random() * (100 + 100) - 100));
+        for(let i = 0; i < 50; i++) aux2[i] = (Math.round(Math.random() * 100));
+
+        /*evaluarNumeros();
+        evaluarNumeros(3);
+        evaluarNumeros([]);
+        evaluarNumeros([1,2]);
+        evaluarNumeros(aux1);*/
+
+        const evaluarNumerosNaturales = (arrNumeros = undefined) => {
+            if(arrNumeros === undefined) return console.warn('NO ingresó el conjunto de números a evaluar');
+            if(!(arrNumeros instanceof Array)) return console.error(`El valor ingresado debe ser un arreglo`);
+            if(arrNumeros.length === 0) return console.error('El arreglo NO puede estar vacío');
+            if(arrNumeros.length !== 50) return console.error('El arreglo debe tener 50 valores');
+            for (const element of arrNumeros) {
+                if(typeof element !== 'number') return console.error(`El valor "${element}" debe ser un número`);
+                if(!(/./.test(element))) return console.warn('Por favor, intrudzuca solo números enteros');
+                if(Math.sign(element) === -1) return console.warn('Por favor, intrudzuca solo números enteros positivos');
+            }
+
+            let pares = arrNumeros.filter(el => el % 2 === 0);
+            let impares = arrNumeros.filter(el => el % 2 !== 0);
+            let positivos = arrNumeros.filter(el => Math.sign(el) === 1);
+            let negativos = arrNumeros.filter(el => Math.sign(el) === -1);
+
+            return console.info(`Arreglo ingresado: ${arrNumeros} \nNúmeros pares: ${pares.length} (${pares}) \nNúmeros impares: ${impares.length} (${impares}) \nNúmeros positivos: ${positivos.length} (${positivos}) \nNúmeros negativos: ${negativos.length} (${negativos})`);
+        }
+
+        evaluarNumerosNaturales();
+        evaluarNumerosNaturales(3);
+        evaluarNumerosNaturales([]);
+        evaluarNumerosNaturales([1,2]);
+        evaluarNumerosNaturales(aux1);
+        evaluarNumerosNaturales(aux2);
+    </script>
+</body>
+</html>

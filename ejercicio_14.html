@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 14</h1>
+    <script>
+        /*"TIENDAS PATITO" se encuentra de aniversario y ha programado una
+        serie de ofertas con la finalidad de brindar facilidades a sus clientes y
+        a la vez de incrementar sus ventas. Estas ofertas se basan específicamente
+        en un porcentaje de descuento sobre el total de compra el cual varia de
+        acuerdo al monto. Por un monto mayor o igual a $500 se hará un descuento
+        del 30%. Por un monto menor de $500 pero mayor o igual a 200 se hará un
+        descuento del 20%.Por un monto menor de $200 pero mayor o igual a 100 se
+        hará un descuento del 10%. Escribir un algoritmo que calcule la cantidad
+        total a pagar de una compra.*/
+
+        const calcularTotal = (montoCompra = undefined) => {
+            if(montoCompra === undefined) return console.warn('NO ingresó el monto de Compra');
+            if(typeof montoCompra !== "number") return console.error(`El valor "${montoCompra}" debe ser un numero`);
+            if(Math.sign(montoCompra) !== 1) return console.error('El monto de Compra debe ser mayor a 0');
+
+            return (montoCompra >= 500)
+                ? console.info(`Monto de Compra: $${montoCompra} \nDescuento (30%): $${montoCompra * 0.30} \nTOTAL A PAGAR: $${montoCompra - (montoCompra * 0.30)}`)
+                : (montoCompra >= 200 && montoCompra < 500)
+                    ? console.info(`Monto de Compra: $${montoCompra} \nDescuento (20%): $${montoCompra * 0.20} \nTOTAL A PAGAR: $${montoCompra - (montoCompra * 0.20)}`)
+                    : (montoCompra >= 100 && montoCompra < 200)
+                        ? console.info(`Monto de Compra: $${montoCompra} \nDescuento (10%): $${montoCompra * 0.10} \nTOTAL A PAGAR: $${montoCompra - (montoCompra * 0.10)}`)
+                        : console.info(`Monto de Compra: $${montoCompra} \nDescuento (0%): $0.00 \nTOTAL A PAGAR: $${montoCompra}`);
+        }
+
+        calcularTotal();
+        calcularTotal('600');
+        calcularTotal(0);
+        calcularTotal(500);
+        calcularTotal(200);
+        calcularTotal(100);
+        calcularTotal(50);
+
+
+    </script>
+</body>
+</html>
