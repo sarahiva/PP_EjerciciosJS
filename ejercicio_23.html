@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 23</h1>
+    <script>
+        /*Escribir un algoritmo que calcule la suma y el producto de los
+        números pares comprendidos entre 20 y 400 incluyendo ambos.*/
+        const resultadoSumaProducto = () => {
+            let suma = 0, producto = 1, arr = new Array();
+            for(let i = 20; i < 401; i++){
+                if((i % 2) === 0){
+                    suma += i;
+                    producto *= i;
+                    arr.push(i);
+                }
+            }
+
+            return console.info(`Números pares entre 20 y 400: ${arr} \nSuma: ${suma} \nProducto: ${producto}`);
+        }
+
+        resultadoSumaProducto();
+    </script>
+</body>
+</html>

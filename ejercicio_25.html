@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 25</h1>
+    <script>
+        /*El ing. De sistemas de un banco de crédito necesita conocer de una
+        lista de 2500 cuentas cuál es la que posee mayor cantidad y cuál es la que
+        posee menor cantidad, de dinero. Escriba un algoritmo que realice lo
+        anterior, sin ordenar las cuentas.*/
+
+        const cantidadMaxMin = (arreglo = undefined) => {
+            if(arreglo === undefined) return console.warn('NO ingresó el conjunto de números a evaluar');
+            if(!(arreglo instanceof Array)) return console.error(`El valor ingresado debe ser un arreglo`);
+            if(arreglo.length === 0) return console.error('El arreglo NO puede estar vacío');
+            for (const element of arreglo) {
+                if(typeof element !== 'number') return console.error(`El valor "${element}" debe ser un número`);
+            }
+
+            return console.info(`Arreglo original: ${arreglo}\nCantidad mayor: ${Math.max(...arreglo)}\nCantidad menor: ${Math.min(...arreglo)}`);
+        }
+
+        let cuentas = new Array();
+        for(let i = 0; i < 250; i++) cuentas[i] = (Math.round(Math.random() * 1000));
+
+        cantidadMaxMin();
+        cantidadMaxMin({});
+        cantidadMaxMin([]);
+        cantidadMaxMin([1,2,'3']);
+        cantidadMaxMin(cuentas);
+
+    
+    </script>
+</body>
+</html>

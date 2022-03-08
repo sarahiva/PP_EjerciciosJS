@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 26</h1>
+    <script>
+        /*Escribir un algoritmo que determine cuántos trabajadores recibirán
+        un salario mayor o igual a 500, dadas la tarifa y las horas trabajadas.*/
+        const salarioTrabajadores = (tarifa = undefined, arregloHoras = undefined) => {
+            if(tarifa === undefined  || arregloHoras === undefined) return console.warn('Debe ingresar ambos campos (tarifa, arregloHoras)');
+            if(typeof tarifa !== "number") return console.error(`El valor "${tarifa}" debe ser un numero`);
+            if(!(arregloHoras instanceof Array)) return console.error(`El campo <arregloHoras> debe ser un arreglo`);
+            if(tarifa <= 0) return console.error('El campo <tarifa> debe ser un numero mayor a cero');
+            if(arregloHoras.length === 0) return console.error('El campo <arregloHoras> no puede estar vacio');
+            for (const element of arregloHoras) {
+                if(typeof element !== 'number') return console.error(`El valor "${element}" debe ser un número`);
+            }
+
+            let salarios = new Array();
+            for(let i = 0; i < arregloHoras.length; i++) salarios[i] = tarifa * arregloHoras[i];
+            let aux = salarios.filter(el => el >= 500);
+
+            return console.info(`Tarifa por hora: $${tarifa} \nTotal de empleados: ${arregloHoras.length} \nTotal de empleados con salario >= 500: ${aux.length} \nSalarios de todos los empleados: \n${salarios}`);
+        }
+
+        let horas = new Array();
+        for(let i = 0; i < 200; i++) horas[i] = (Math.round(Math.random() * 20));
+
+        console.log(horas);
+
+        salarioTrabajadores();
+        salarioTrabajadores(70,horas);
+    </script>
+</body>
+</html>

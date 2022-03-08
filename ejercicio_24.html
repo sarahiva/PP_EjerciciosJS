@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 24</h1>
+    <script>
+        /*Escribir un algoritmo que lea varios caracteres, uno a la vez, y que
+        se detenga cuando sea dada alguna de las vocales y la escriba.*/
+        function evaluarEntrada(){
+            let caracter = prompt('Ingresa un caracter ');
+            return (!caracter)
+                ? console.info('Valor NO ingresado')
+                : (caracter.length !== 1) 
+                    ? alert('Solo se debe ingresar un carater')
+                        :(/[aeiou]/i.test(caracter))
+                            ? alert(`NO se aceptan vocales: ${caracter}`) 
+                            : evaluarEntrada();
+        }
+        
+        evaluarEntrada();
+    </script>
+</body>
+</html>

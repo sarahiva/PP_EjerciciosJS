@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h1>Ejercicio 28</h1>
+    <script>
+        /*Escribir un algoritmo que clasifique a 50 personas según su edad y
+        sexo, al final deberá escribir la cantidad de personas masculinas mayores
+        de edad, la cantidad de personas femeninas menores de edad, cantidad de
+        personas mayores y menores, además deberá indicar el porcentaje que
+        representan las personas mayores y las menores, de edad.*/
+        const clasificarPersonal = (arreglo = undefined) => {
+            if(arreglo === undefined) return console.warn('NO ingresó el conjunto de personas a evaluar');
+            if(!(arreglo instanceof Array)) return console.error(`El valor ingresado debe ser un arreglo`);
+            if(arreglo.length === 0) return console.error('El arreglo NO puede estar vacío');
+            for (const element of arreglo) {
+                if(!(element instanceof Object)) return console.error(`El valor "${element}" debe ser un objeto`);
+            }
+
+            let masculinosMayores = 0,femeninasMenores = 0, totalMayores = 0, totalMenores = 0;
+            arreglo.forEach(element => {
+                if(element.sexo === 0 && element.edad >= 18) masculinosMayores += 1;
+                if(element.sexo === 1 && element.edad < 18) femeninasMenores += 1;
+                if(element.edad >= 18) totalMayores += 1;
+                if(element.edad < 18) totalMenores += 1;
+            });
+
+            let info = `Personas masculinas mayores de edad: ${masculinosMayores} \nPersonas femeninas menores de edad: ${femeninasMenores} \nTotal de mayores de edad: ${totalMayores} (${(totalMayores * 100)/arreglo.length}%)\nTotal menores de edad: ${totalMenores} (${(totalMenores * 100)/arreglo.length}%) \nDatos de personas: `
+            return console.info(info,arreglo);
+        }
+
+        //personas[sexo,edad]
+        // 1 - Femenino
+        // 0 - Masculino
+
+        function Persona(sexo,edad){
+            this.sexo = sexo;
+            this.edad = edad;
+        }
+
+        let personas = new Array();
+        for(let i = 0; i < 50; i++){
+            personas[i] = new Persona(Math.round(Math.random()), Math.round(Math.random() * (60 - 1) + 1));
+        }
+        
+        clasificarPersonal();
+        clasificarPersonal({});
+        clasificarPersonal([]);
+        clasificarPersonal([{},1]);
+        clasificarPersonal(personas);
+    </script>
+</body>
+</html>
